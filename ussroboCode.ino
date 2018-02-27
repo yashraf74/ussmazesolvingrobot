@@ -40,18 +40,18 @@ void loop()
       Serial.println("robot is turning right ");
       //Serial.print(L);
     }
-    
-    else if(isRUSSnear() && isLUSSnear())
-    {
-       Serial.println("robot is bylef w yerga3 ");
-       swap(choice);  
-    }
 
     else if(!isRUSSnear() && !isLUSSnear())
     {
       turn(choice);
       Serial.println("robot is turning ");
       Serial.print(choice);
+    }
+ 
+ else if(isRUSSnear() && isLUSSnear())
+    {
+       Serial.println("robot is bylef w yerga3 ");
+       swap(choice);  
     }
   
   delay(2000);
