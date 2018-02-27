@@ -8,6 +8,7 @@ Ultrasonic FUSS(12, 11);
 Ultrasonic RUSS(4, 2);
 Ultrasonic LUSS(13, 7);
 
+int sor3a = 90;                       //variable representing pwm (speed) for analog write.
 int choice = 4;                       //choice to turn either left or right, 4 represents left and 6 represents right.
 int in1 = 3;
 int in2 = 5;
@@ -26,6 +27,7 @@ void loop()
   {
     moveF();
     Serial.println("robot is walking forward ");
+    delay(1000);
   }  
   
     if (isRUSSnear() && !isLUSSnear())
@@ -40,21 +42,21 @@ void loop()
       Serial.println("robot is turning right ");
       //Serial.print(L);
     }
-
-    else if(!isRUSSnear() && !isLUSSnear())
-    {
-      turn(choice);
-      Serial.println("robot is turning ");
-      Serial.print(choice);
-    }
- 
- else if(isRUSSnear() && isLUSSnear())
+    
+    else if(isRUSSnear() && isLUSSnear())
     {
        Serial.println("robot is bylef w yerga3 ");
        swap(choice);  
     }
+
+    else if(!isRUSSnear() && !isLUSSnear())
+    {
+      turn(choice);
+      Serial.print("robot is turning  ");
+      Serial.println(choice);
+    }
   
-  delay(2000);
+  delay(1000);
 }
 
 bool isFUSSnear()
@@ -89,33 +91,33 @@ bool isLUSSnear()
 
 void moveF()
 {
-  analogWrite(in1,200);
+  analogWrite(in1,sor3a);
   analogWrite(in2,0);
-  analogWrite(in3,200);
+  analogWrite(in3,sor3a);
   analogWrite(in4,0);
 }
 
 void moveB()
 {
   analogWrite(in1,0);
-  analogWrite(in2,200);
+  analogWrite(in2,sor3a);
   analogWrite(in3,0);
-  analogWrite(in4,200);
+  analogWrite(in4,sor3a);
 }
 
 void moveR()
 {
-  analogWrite(in1,200);
+  analogWrite(in1,sor3a);
   analogWrite(in2,0);
   analogWrite(in3,0);
-  analogWrite(in4,200);
+  analogWrite(in4,sor3a);
 }
  
   void moveL()
 {
     analogWrite(in1,0);
-    analogWrite(in2,200);
-    analogWrite(in3,200);
+    analogWrite(in2,sor3a);
+    analogWrite(in3,sor3a);
     analogWrite(in4,0); 
 }
   
