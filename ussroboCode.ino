@@ -28,7 +28,7 @@ void loop()
     Serial.println("robot is walking forward ");
   }  
   
-    if (isRUSSnear() && !isLUSSnear)
+    if (isRUSSnear() && !isLUSSnear())
     {
      moveL();
      Serial.println("robot is turning left ");
